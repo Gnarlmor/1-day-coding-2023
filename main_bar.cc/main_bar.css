@@ -1,0 +1,21 @@
+.main_bar_black
+{
+  background-color: aquamarine;
+  
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  left: 0%;
+  margin: auto;
+  max-width:auto ;
+  max-height: auto;
+  outline: 1px black;
+}
+
+
+
+
+
+
+
+

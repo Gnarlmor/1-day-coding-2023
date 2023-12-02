@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="inregistrare/inregistrare.css" />
+  <title>Registration Form</title>
+  
+</head>
+
+<body>
+  <form action="" method="POST" id="registrationform">
+    <h1>Register</h1>
+    <div class="alert">Form submited succesfully</div>
+    <fieldset>
+      <!-- Section 1 -->
+      <legend><span class="section">1</span>Your Basic Info</legend>
+      <label class="" for="name">Name:</label>
+      <input type="text" name="name" value="" id="name" required />
+
+      <label class="" for="email">Email:</label>
+      <input type="email" name="email" value="" id="email" required />
+
+      <label for="password">password:</label>
+      <input type="password" name="password" value="" id="password" required />
+
+      <p>Don't have an account? <a href="Autentificare.html">Log in.</a> </p>
+
+      <button type="submit" sendMessage()>Register</button>
+    </fieldset>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD8LJgghyu1ADVTLclEQKf72hUb0A6DN_w",
+  authDomain: "hackaton-ea58f.firebaseapp.com",
+  projectId: "hackaton-ea58f",
+  storageBucket: "hackaton-ea58f.appspot.com",
+  messagingSenderId: "241216414060",
+  appId: "1:241216414060:web:d90700579e81724e351349",
+  measurementId: "G-Z0BL6LF6RX"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+//listen for submit event//(1)
+document
+.getElementById('registrationform')
+.addEventListener('submit', formSubmit);
+
+//Submit form(1.2)
+function formSubmit(e) {
+e.preventDefault();
+// Get Values from the DOM
+let name = document.querySelector('#name').value;
+let email = document.querySelector('#email').value;
+let password = document.querySelector('#password').value;
+
+ //send message values(3)
+ sendMessage(name, email, password);
+    }
+
+    //Send Message to Firebase(4)
+    function sendMessage(name, email, password) {
+      const database = getDatabase();
+
+      set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
+        name: name,
+        email: email,
+        password: password,
+      }).then(() => {
+          //Show Alert Message(5)
+       document.querySelector('.alert').style.display = 'block';
+        //Hide Alert Message After Seven Seconds(6)
+       setTimeout(function () {
+       document.querySelector('.alert').style.display = 'none';
+       }, 7000);
+       document.getElementById('registrationform').reset();
+      }).catch((error) => {
+        alert(error)
+      })
+    }
+    </script>
+
+    
+</body>
+</body>
+
+</html>

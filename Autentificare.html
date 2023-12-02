@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="inregistrare/inregistrare.css" />
+  <title>autentification Form</title>
+</head>
+
+<body>
+  <form action="" method="POST" id="autentificationform">
+    <h1>Log In</h1>
+    <div class="alert">Message Sent</div>
+    <fieldset>
+      <!-- Section 1 -->
+
+      <label class="" for="email">Email:</label>
+      <input type="email" name="email" value="" id="email" required />
+
+      <label for="password">password:</label>
+      <input type="password" name="password" value="" id="password" required />
+
+      <p>Already have an account? <a href="registre.html">Registre.</a> </p>
+
+      <button type="submit" sendMessage()>Log In</button>
+    </fieldset>
+
+    
+
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script src="app.js"></script>
+</body>
